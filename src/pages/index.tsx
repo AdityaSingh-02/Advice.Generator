@@ -1,7 +1,7 @@
 import Head from "next/head";
 import LandingPage from "@/Components/LandingPage";
 
-export default function Home(props:any) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -10,17 +10,7 @@ export default function Home(props:any) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <LandingPage advice={props.data} />
+      <LandingPage />
     </>
   );
 }
-
-export const getServerSideProps = async () => {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/1`);
-  const adv:adv[] = await res.json();
-  return {
-    props: {
-      advice: adv,
-    },
-  };
-};
